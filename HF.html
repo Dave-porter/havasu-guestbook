@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Havasu Falls - Guestbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <div id="disqus_thread"></div>
+
+  <script>
+  var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = "havasu-falls-guestbook";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://havasu-falls.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+
+</body>
+</html>
+
+
+
