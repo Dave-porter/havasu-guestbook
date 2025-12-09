@@ -1,67 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Havasu Falls Guestbook</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-        }
-        #container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body style="margin:0; padding:20px; font-family:Arial; background:#fafafa;">
 
-<div id="container">
     <h2 style="text-align:center;">Havasu Falls — Guestbook</h2>
     <div id="disqus_thread"></div>
-</div>
 
-<!-- DISQUS CODE -->
-<script>
-var disqus_config = function () {
-    this.page.url = "https://dave-porter.github.io/havasu-guestbook/";
-    this.page.identifier = "havasu-guestbook-page";
-};
-(function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://havasu-falls.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-</script>
+    <!-- DISQUS EMBED CODE -->
+    <script>
+    var disqus_config = function () {
+        this.page.url = "https://dave-porter.github.io/havasu-guestbook/";
+        this.page.identifier = "havasu-guestbook";
+    };
 
-<!-- AUTO-GUEST + AUTO-NEWEST SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    function fixDisqus() {
+    (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://havasu-falls.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
 
-        // 1. Auto-cocher "post as guest"
-        const guestOption = document.querySelector('input[data-testid="post-as-guest"]');
-        if (guestOption && !guestOption.checked) {
-            guestOption.checked = true;
+    <!-- AUTO GUEST + NEWEST -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        function fixDisqus() {
+            // Auto "post as guest"
+            const guest = document.querySelector('input[data-testid="post-as-guest"]');
+            if (guest && !guest.checked) guest.checked = true;
+
+            // Auto "Newest"
+            const newest = [...document.querySelectorAll("a")]
+                .find(a => a.textContent.trim() === "Newest");
+            if (newest) newest.click();
         }
 
-        // 2. Passer automatiquement à "Newest"
-        const newest = [...document.querySelectorAll("a")]
-            .find(a => a.textContent.trim() === "Newest");
-        if (newest) newest.click();
-    }
-
-    setInterval(fixDisqus, 600);
-});
-</script>
+        setInterval(fixDisqus, 800);
+    });
+    </script>
 
 </body>
 </html>
+
