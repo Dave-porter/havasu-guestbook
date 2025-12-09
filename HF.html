@@ -1,48 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Havasu Falls – Guestbook</title>
-</head>
-<body>
-
-<!-- Disqus Thread -->
-<div id="disqus_thread"></div>
-
-<script>
-    var disqus_config = function () {
-        this.page.url = window.location.href;
-        this.page.identifier = "havasu-guestbook";
-        this.sort = "newest"; // tri par défaut = nouveaux commentaires
-    };
-
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://havasu-falls.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<!-- AUTO-CHECK "POST AS GUEST" -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const interval = setInterval(() => {
-        // sélectionne la case "I’d rather post as a guest"
-        const labels = document.querySelectorAll("label");
-        labels.forEach(label => {
-            if (label.textContent.includes("I'd rather post as a guest")) {
-                const checkbox = label.querySelector("input[type='checkbox']");
-                if (checkbox && !checkbox.checked) {
-                    checkbox.checked = true;     // coche automatiquement
-                }
-                clearInterval(interval);
-            }
-        });
-    }, 500);
+    function clickGuestOption() {
+        // Trouve la case "I'd rather post as a guest"
+        const guestOption = document.querySelector('input[type="checkbox"][name="guest_checkbox"], input[data-testid="post-as-guest"]');
+
+        if (guestOption && !guestOption.checked) {
+            guestOption.checked = true;
+            console.log("Guest option auto-cochée ✔️");
+        }
+
+        // Style "Newest"
+        const newestTab = [...document.querySelectorAll("a")].find(a => a.textContent.trim() === "Newest");
+        if (newestTab) newestTab.click();
+    }
+
+    setInterval(clickGuestOption, 500);
 });
 </script>
 
-</body>
-</html>
