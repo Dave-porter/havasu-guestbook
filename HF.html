@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Havasu Falls – Guestbook</title>
+<title>Havasu Falls - Guestbook</title>
 
 <!-- Style général -->
 <style>
@@ -12,6 +12,7 @@
         background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center fixed;
         background-size: cover;
     }
+
     .overlay {
         backdrop-filter: blur(6px) brightness(0.9);
         background: rgba(255,255,255,0.55);
@@ -20,11 +21,13 @@
         padding: 30px;
         border-radius: 12px;
     }
+
     h1 {
         text-align: center;
         font-size: 36px;
         margin-bottom: 10px;
     }
+
     p.center {
         text-align: center;
         font-size: 18px;
@@ -36,13 +39,13 @@
 <body>
 
 <div class="overlay">
-    <h1>Havasu Falls – Guestbook</h1>
+    <h1>Havasu Falls • Guestbook</h1>
     <p class="center">
-        Leave a message about your journey 🌿  
+        Leave a message about your journey 🌿<br>
         No login required — choose a name and write freely!
     </p>
 
-    <!-- CommentBox Container -->
+    <!-- 🔥 CommentBox Container (NE PAS MODIFIER) -->
     <div class="commentbox"></div>
 </div>
 
@@ -50,13 +53,14 @@
 <script src="https://unpkg.com/commentbox.io/dist/commentbox.min.js"></script>
 <script>
 commentBox("5651751147405312-proj", {
-    sortOrder: "newest",    // Toujours newest
-    defaultBoxId: "havasu-guestbook",
-    backgroundColor: "#ffffffee",
+    sortOrder: "newest",        // newest first
+    className: "commentbox",    // IMPORTANT !!
+    backgroundColor: "#ffffffee"
 });
 </script>
 
 </body>
 </html>
+
 
 
