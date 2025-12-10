@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Havasu Falls Guestbook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Havasu Falls – Guestbook</title>
+
+<!-- Style général -->
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center fixed;
+        background-size: cover;
+    }
+    .overlay {
+        backdrop-filter: blur(6px) brightness(0.9);
+        background: rgba(255,255,255,0.55);
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 12px;
+    }
+    h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    p.center {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+</style>
+
 </head>
+<body>
 
-<body style="margin:0; padding:20px; font-family:Arial; background:#fafafa;">
+<div class="overlay">
+    <h1>Havasu Falls – Guestbook</h1>
+    <p class="center">
+        Leave a message about your journey 🌿  
+        No login required — choose a name and write freely!
+    </p>
 
-    <h2 style="text-align:center;">Havasu Falls — Guestbook</h2>
-    <div id="disqus_thread"></div>
+    <!-- CommentBox Container -->
+    <div class="commentbox"></div>
+</div>
 
-    <!-- DISQUS EMBED CODE -->
-    <script>
-    var disqus_config = function () {
-        this.page.url = "https://dave-porter.github.io/havasu-guestbook/";
-        this.page.identifier = "havasu-guestbook";
-    };
-
-    (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://havasu-falls.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    </script>
-
-    <!-- AUTO GUEST + NEWEST -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        function fixDisqus() {
-            // Auto "post as guest"
-            const guest = document.querySelector('input[data-testid="post-as-guest"]');
-            if (guest && !guest.checked) guest.checked = true;
-
-            // Auto "Newest"
-            const newest = [...document.querySelectorAll("a")]
-                .find(a => a.textContent.trim() === "Newest");
-            if (newest) newest.click();
-        }
-
-        setInterval(fixDisqus, 800);
-    });
-    </script>
+<!-- CommentBox Script -->
+<script src="https://unpkg.com/commentbox.io/dist/commentbox.min.js"></script>
+<script>
+commentBox("5651751147405312-proj", {
+    sortOrder: "newest",    // Toujours newest
+    defaultBoxId: "havasu-guestbook",
+    backgroundColor: "#ffffffee",
+});
+</script>
 
 </body>
 </html>
+
 
